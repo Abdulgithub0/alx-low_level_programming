@@ -6,7 +6,7 @@
  * @size: size of the array
  * @cmp: pointer to the call back func.
  *
- * Return: void
+ * Return: index of the element or -1 if otherwise
  */
 
 int int_index(int *array, int size, int (*cmp)(int))
