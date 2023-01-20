@@ -29,7 +29,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	{
 		printf("%s", first_string);
 	}
-	for (i = 1; i < n; i++)
+	for (i = 0; i < (n - 1); i++)
 	{
 		other_string = va_arg(list, char *);
 		if (other_string == NULL)
