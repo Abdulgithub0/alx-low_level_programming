@@ -18,6 +18,11 @@ list_t *add_node(list_t **head, const char *str)
 	if (cranial == NULL)
 		return (NULL);
 	cranial->str = strdup(str);
+	if (!cranial->str)
+	{
+		free(caudal);
+		return (NULL);
+	}
 	cranial->len = strlen(cranial->str);
 	if (*head == NULL)
 	{
