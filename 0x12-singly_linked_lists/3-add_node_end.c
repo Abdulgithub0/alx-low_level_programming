@@ -18,6 +18,10 @@ list_t *add_node_end(list_t **head, const char *str)
 	if (caudal == NULL)
 		return (NULL);
 	caudal->str = strdup(str);
+	if (!caudal->str)
+	{
+		free(caudal);
+		return (NULL);
 	caudal->len = strlen(caudal->str);
 	if (*head == NULL)
 	{
