@@ -10,19 +10,14 @@
 
 void free_list(list_t *head)
 {
-	list_t *last_node;
+	list_t *new_head;
 
-	last_node = head;
-	//if (last_node == NULL)
-	//	free(last_node->next);
-	if (last_node->next != NULL)
+	while (head)
 	{
-		last_node =  last_node->next;
-		free_list(last_node);
-	}
-	else
-	{
-		free(last_node->next);
+		new_head = head->next;
+		free(head->str);
+		free(head);
+		head = new_head;
 	}
 }
-	
+

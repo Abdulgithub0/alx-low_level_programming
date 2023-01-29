@@ -6,7 +6,7 @@
  * Return: void
  */
 
-void execute_before_main(void) __attribute__((constructor));
+void __attribute__((constructor)) execute_before_main(void);
 
 void execute_before_main(void)
 {
