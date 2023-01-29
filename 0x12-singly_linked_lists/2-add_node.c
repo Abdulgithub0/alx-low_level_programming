@@ -20,7 +20,7 @@ list_t *add_node(list_t **head, const char *str)
 	cranial->str = strdup(str);
 	if (!cranial->str)
 	{
-		free(caudal);
+		free(cranial);
 		return (NULL);
 	}
 	cranial->len = strlen(cranial->str);
