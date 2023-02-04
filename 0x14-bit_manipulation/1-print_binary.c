@@ -10,8 +10,6 @@ i */
 
 void print_binary(unsigned long int n)
 {
-	unsigned long int i;
-
 	if (n > 0)
 	{
 		print_binary(n >> 1);
