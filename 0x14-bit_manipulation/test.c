@@ -32,6 +32,9 @@ int main(void)
 
     n = binary_to_uint("1e01");
 
+    n = binary_to_uint(NULL);
+    printf("%u\n", n);
+
     printf("%u\n", n);
 
     n = binary_to_uint("1100010");
