@@ -6,7 +6,7 @@
  * @n: decimal number to be printed as binary
  *
  * Return: void
-i */
+ */
 
 void print_binary(unsigned long int n)
 {
