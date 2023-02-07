@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	/* open first argument for reading */
 	file_from = open(argv[1], O_RDONLY);
 	/* open second argument for writing into it */
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while ((end_of_read = read(file_from, buffer, 1024)) > 0)
 	{
 		end_of_write = write(file_to, buffer, 1024);
