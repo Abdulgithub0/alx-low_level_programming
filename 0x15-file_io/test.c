@@ -8,9 +8,13 @@
 
 /**
 
- * main - check the code
+ * main - check the code .
 
  *
+
+ * @ac: Argumetns counter
+
+ * @av: Arguments array
 
  * Return: Always 0.
 
@@ -20,24 +24,24 @@ int main(int ac, char **av)
 
 {
 
-    int res;
+	int res;
 
 
 
-    if (ac != 3)
+	if (ac < 2)
 
-    {
+	{
 
-        dprintf(2, "Usage: %s filename text\n", av[0]);
+		printf("Usage: %s filename\n", av[0]);
 
-        exit(1);
+		return (1);
 
-    }
+	}
 
-    res = create_file(av[1], av[2]);
+	res = create_file(av[1], NULL);
 
-    printf("-> %i)\n", res);
+	printf("%i\n", res);
 
-    return (0);
+	return (0);
 
 }

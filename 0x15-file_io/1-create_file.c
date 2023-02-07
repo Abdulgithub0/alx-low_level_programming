@@ -21,20 +21,15 @@ int create_file(const char *filename, char *text_content)
 	fdopen = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 	if (fdopen < 0)
 		return (-1);
-	if (!text_content)
-	{
-		text_content = '\0';
-		lenght = 1;
-	}
-	else
+	if (text_content != NULL)
 	{
 		lenght = strlen(text_content);
-	}
-	fdwrite = write(fdopen, text_content, lenght);
-	if (fdwrite < 0)
-	{
-		close(fdopen);
-		return (-1);
+		fdwrite = write(fdopen, text_content, lenght);
+		if (fdwrite < 0)
+		{
+			close(fdopen);
+			return (-1);
+		}
 	}
 	close(fdopen);
 	return (1);
