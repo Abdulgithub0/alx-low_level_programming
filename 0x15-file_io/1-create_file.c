@@ -1,5 +1,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <string.h>
 #include <unistd.h>
 #include "main.h"
 
@@ -13,32 +14,20 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	ssize_t open_text, total_write;
-
-	int length, return_o;
+	int fdopen, fdwrite, lenght;
 
 	if (!filename)
 		return (-1);
-	length = 0;
-	while (text_content[length] != '\0')
-		length++;
-	if ((return_o = open(filename, O_TRUNC)) < 0)
+	fdopen = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	if (fdopen < 0)
+		return (-1);
+	lenght = strlen(text_content);
+	fdwrite = write(fdopen, text_content, lenght);
+	if (fdwrite < 0)
 	{
-		open_text = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	}
-	else
-	{
-		open_text = open(filename, O_TRUNC);
-	}
-	if (open_text < 0)
-	{
+		close(fdopen);
 		return (-1);
 	}
-	total_write = write(open_text, text_content, length);
-	if (total_write < 0)
-	{
-		return (-1);
-	}
-	close(open_text);
+	close(fdopen);
 	return (1);
 }
