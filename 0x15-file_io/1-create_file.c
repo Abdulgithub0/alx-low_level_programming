@@ -17,14 +17,21 @@ int create_file(const char *filename, char *text_content)
 {
 	ssize_t open_text, total_write;
 
-	int length;
+	int length, return_o;
 
 	if (!filename)
 		return (-1);
 	length = 0;
 	while (text_content[length] != '\0')
 		length++;
-	open_text = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	if ((return_o = open(filename, O_TRUNC)) < 0)
+	{
+		open_text = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	}
+	else
+	{
+		open_text = open(filename, O_TRUNC);
+	}
 	if (open_text < 0)
 	{
 		return (-1);
