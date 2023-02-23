@@ -18,25 +18,21 @@ int main(void)
 
 {
 
-    print_binary(0);
+    int n;
 
-    printf("\n");
 
-    print_binary(1);
 
-    printf("\n");
+    n = get_bit(1024, 10);
 
-    print_binary(98);
+    printf("%d\n", n);
 
-    printf("\n");
+    n = get_bit(98, 1);
 
-    print_binary(1024);
+    printf("%d\n", n);
 
-    printf("\n");
+    n = get_bit(1024, 0);
 
-    print_binary((1 << 10) + 1);
-
-    printf("\n");
+    printf("%d\n", n);
 
     return (0);
 
