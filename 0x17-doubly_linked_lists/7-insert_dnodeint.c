@@ -16,19 +16,27 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	unsigned int locator;
 
 	locator = 0;
-	if (!(*h))
+	if (*h == NULL)
 		return (NULL);
 	new_dnode = malloc(sizeof(dlistint_t));
 	if (!new_dnode)
 		return (NULL);
 	traveler = *h;
+	new_dnode->n = n;
 	last_dnode = *h;
+	if (idx == 0)
+	{
+		new_dnode->next = last_dnode;
+		new_dnode->prev = NULL;
+		last_dnode->prev = new_dnode;
+		*h = new_dnode;
+		return (new_dnode);
+	}
 	while (traveler)
 	{
 		last_dnode = traveler;
 		if (locator == idx)
 		{
-			new_dnode->n = n;
 			new_dnode->next = traveler;
 			new_dnode->prev = traveler->prev;
 			traveler->prev->next = new_dnode;
@@ -38,9 +46,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		traveler = traveler->next;
 		locator++;
 	}
-	if (locator == idx)
+	if (locator - 1 == idx)
 	{
-		new_dnode->n = n;
 		new_dnode->next = last_dnode;
 		new_dnode->prev = last_dnode->prev;
 		last_dnode->prev = new_dnode;
