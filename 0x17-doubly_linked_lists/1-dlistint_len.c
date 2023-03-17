@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * dlistint_len - func. to return total doubly linked nodes 
+ * dlistint_len - func. to return total doubly linked nodes
  * @h: pointer to address of the head node
  * Return: total number of the nodes
  */
