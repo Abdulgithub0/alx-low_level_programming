@@ -22,11 +22,12 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (!new_dnode)
 		return (NULL);
 	traveler = *h;
-	new_dnode->n = n;
 	last_dnode = *h;
+	new_dnode->n = n;
+	new_dnode->next = last_dnode;
 	if (idx == 0)
 	{
-		new_dnode->next = last_dnode;
+		new_dnode->next = traveler;
 		new_dnode->prev = NULL;
 		last_dnode->prev = new_dnode;
 		*h = new_dnode;
