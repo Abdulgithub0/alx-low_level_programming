@@ -17,15 +17,17 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	locator = 0;
 	if (*head == NULL)
 		return (-1);
-	traveler = *head;
-	last_dnode = *head;
 	if (index == 0)
 	{
 		traveler = (*head)->next;
+		if (traveler)
+			traveler->prev = NULL;
 		free(*head);
 		*head = traveler;
 		return (1);
 	}
+	traveler = *head;
+	last_dnode = *head;
 	while (traveler)
 	{
 		last_dnode = traveler;
