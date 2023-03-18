@@ -16,8 +16,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	unsigned int locator;
 
 	locator = 0;
-	if (*h == NULL)
-		return (NULL);
 	new_dnode = malloc(sizeof(dlistint_t));
 	if (!new_dnode)
 		return (NULL);
@@ -25,6 +23,12 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	last_dnode = *h;
 	new_dnode->n = n;
 	new_dnode->next = last_dnode;
+	if (*h == NULL)
+	{
+		new_dnode->prev = NULL;
+		*h = new_dnode;
+		return (new_dnode);
+	}
 	if (idx == 0)
 	{
 		new_dnode->next = traveler;
