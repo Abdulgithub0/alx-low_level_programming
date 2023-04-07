@@ -11,50 +11,57 @@
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int i;
+    unsigned long int i;
+    hash_node_t *new_hnode, *traveler;
 
-	hash_node_t *new_hnode, *traveler, *prev_node;
+    if (ht == NULL || key == NULL)
+        return (0);
 
-	if (ht == NULL || key == NULL)
-		return (0);
-	i = key_index((unsigned char *) key, ht->size);
-	new_hnode = malloc(sizeof(hash_node_t));
-	if (!new_hnode)
-		return (0);
-	new_hnode->key = strdup(key);
-	if (new_hnode->key == NULL)
-	{
-		free(new_hnode);
-		return (0);
-	}
-	new_hnode->value = strdup(value);
-	if (new_hnode->value == NULL)
-	{
-		free(new_hnode->key);
-		free(new_hnode);
-		return (0);
-	}
-	new_hnode->next = NULL;
-	if (ht->array[i] == NULL)
-	{
-		ht->array[i] = new_hnode;
-		(void) prev_node;
-		return (1);
-	}
-	traveler = ht->array[i];
-	while (traveler)
-	{
-		if((strcmp(traveler->key, key)) == 0)
-		{
-			free(traveler->value);
-			free(new_hnode->key);
-			free(new_hnode);
-			traveler->value = new_hnode->value;
-			return (1);
-		}
-		prev_node = traveler;
-		traveler = traveler->next;
-	}
-	prev_node = new_hnode;
-	return (1);
+    i = key_index((unsigned char *) key, ht->size);
+    new_hnode = malloc(sizeof(hash_node_t));
+    if (new_hnode == NULL)
+        return (0);
+
+    new_hnode->key = strdup(key);
+    if (new_hnode->key == NULL)
+    {
+        free(new_hnode);
+        return (0);
+    }
+
+    new_hnode->value = strdup(value);
+    if (new_hnode->value == NULL)
+    {
+        free(new_hnode->key);
+        free(new_hnode);
+        return (0);
+    }
+
+    new_hnode->next = NULL;
+    if (ht->array[i] == NULL)
+    {
+        ht->array[i] = new_hnode;
+        return (1);
+    }
+
+    traveler = ht->array[i];
+    while (traveler)
+    {
+        if (strcmp(traveler->key, key) == 0)
+        {
+            free(traveler->value);
+            traveler->value = strdup(value);
+            free(new_hnode->key);
+            free(new_hnode->value);
+            free(new_hnode);
+            return (1);
+        }
+        if (traveler->next == NULL)
+        {
+            traveler->next = new_hnode;
+            return (1);
+        }
+        traveler = traveler->next;
+    }
+    return (0);
 }
