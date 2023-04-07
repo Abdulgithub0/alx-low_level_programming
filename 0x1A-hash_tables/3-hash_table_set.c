@@ -41,9 +41,17 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		(void) prev_node;
 		return (1);
 	}
-	traveler = ht->array[i]->next;
+	traveler = ht->array[i];
 	while (traveler)
 	{
+		if((strcmp(traveler->key, key)) == 0)
+		{
+			free(traveler->value);
+			free(new_hnode->key);
+			free(new_hnode);
+			traveler->value = new_hnode->value;
+			return (1);
+		}
 		prev_node = traveler;
 		traveler = traveler->next;
 	}
