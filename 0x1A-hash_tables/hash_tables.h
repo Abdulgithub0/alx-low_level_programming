@@ -41,8 +41,8 @@ hash_table_t *hash_table_create(unsigned long int size);
 unsigned long int hash_djb2(const unsigned char *str);
 unsigned long int key_index(const unsigned char *key, unsigned long int size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
-int res_col(hash_node_t *trav, hash_node_t *hn, const char *vl, const char *ky);
+int res_col(hash_node_t **trav, hash_node_t *hn, const char *vl, const char *k);
 char *hash_table_get(const hash_table_t *ht, const char *key);
- void hash_table_print(const hash_table_t *ht);
-
+void hash_table_print(const hash_table_t *ht);
+void hash_table_delete(hash_table_t *ht);
 #endif
