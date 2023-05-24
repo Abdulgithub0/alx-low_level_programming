@@ -4,10 +4,10 @@ OBJ = $(subst .c,.o,$(SRC))
 NAME = school
 RM = rm
 all : $(OBJ) m.h
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
 re : $(SRC) m.h
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(SRC) -o $(NAME)
 
 .PHONY: clean oclean fclean
 clean :
