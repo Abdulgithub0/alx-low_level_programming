@@ -12,6 +12,7 @@
 """
 
 def island_perimeter(grid):
+    """defining the island_perimeter"""
     length = 0
     breadth = 0
     lst = [0]
