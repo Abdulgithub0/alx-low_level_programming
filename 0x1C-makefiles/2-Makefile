@@ -5,8 +5,4 @@ NAME = school
 .PHONY: all
 all : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-main.o : main.c m.h
-	$(CC) -c main.c
-
-school.o : school.c m.h
-	$(CC) -c school.c
+$(OBJ) : m.h
