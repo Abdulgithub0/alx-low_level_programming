@@ -5,5 +5,4 @@ NAME = exe
 .PHONY: all
 all : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-
 $(OBJ): m.h
