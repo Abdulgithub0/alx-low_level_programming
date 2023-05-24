@@ -13,6 +13,7 @@ re : $(SRC) m.h
 .PHONY: clean oclean fclean
 clean :
 	rm -f $(RM)
+	rm -f $(NAME)
 oclean :
 	rm  -f $(OBJ)
 
