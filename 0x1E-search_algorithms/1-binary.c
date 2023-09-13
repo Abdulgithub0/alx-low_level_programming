@@ -22,17 +22,27 @@ int binary_search(int *array, size_t size, int value)
       for (i = l_end; i <= r_end; i++)
         {
           if (i != r_end)
+	  {
             printf("%d, ", array[i]);
+	  }
           else
+	  {
             printf("%d\n", array[i]);
+	  }
         } 
       mid = (l_end + r_end) / 2;
       if (array[mid] == value)
-        return(mid);
+      {
+        return (mid);
+      }
       else if (value < array[mid])
+      {
         r_end = mid - 1;
+      }
       else
+      {
         l_end = mid + 1;
+      }
     }
   return (-1);
 }
