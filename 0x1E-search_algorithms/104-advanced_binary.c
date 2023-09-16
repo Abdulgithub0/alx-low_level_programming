@@ -40,7 +40,7 @@ int recursive_search(int arr[], int start, int end, int x)
 	{
 		return (recursive_search(arr, mid + 1, end, x));
 	}
-	return (-1)
+	return (-1);
 }
 
 /**
