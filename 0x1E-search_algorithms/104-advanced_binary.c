@@ -53,5 +53,7 @@ int recursive_search(int arr[], int start, int end, int x)
 
 int advanced_binary(int *array, size_t size, int value)
 {
-	return recursive_search(array, 0, size - 1, value);
+	if (array && size != 0 && value)
+		return recursive_search(array, 0, size - 1, value);
+	return (-1);
 }
